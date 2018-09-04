@@ -24,6 +24,7 @@ contract RxToken {
     );
 
     mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address =>uint256)) public allowance;
     // Allowance 
     constructor(uint256 _initialSupply) public {
         balanceOf[msg.sender] = _initialSupply;
@@ -47,9 +48,9 @@ contract RxToken {
     // Approve
     function approve(address _spender, uint256 _value) public returns (bool success) {
         // Allowance
-
+        allowance[msg.sender][_spender] = _value;
         // Approve
-        emit Approval(msg.sender, _spender, _value);
+        Approval(msg.sender, _spender, _value);
 
         return true;
     }
