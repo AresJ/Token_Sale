@@ -1,6 +1,7 @@
 pragma solidity ^0.4.2;
 
 contract RxToken {
+
 	// Name
     string public name = "Rx Token";
     // Symbol
@@ -8,14 +9,22 @@ contract RxToken {
     string public standard = "Rx Token v1.0";
     uint256 public totalSupply;
 
+    // Transfer
     event Transfer(
         address indexed _from,
         address indexed _to,
         uint256 _value
     );
     
-    mapping(address => uint256) public balanceOf;
+    // Approve
+    event Approval(
+        address indexed _owner,
+        address indexed _spender,
+        uint256 _value
+    );
 
+    mapping(address => uint256) public balanceOf;
+    // Allowance 
     constructor(uint256 _initialSupply) public {
         balanceOf[msg.sender] = _initialSupply;
         totalSupply = _initialSupply;
@@ -34,4 +43,15 @@ contract RxToken {
     // Return a boolean
         return true;
     }
+
+    // Approve
+    function approve(address _spender, uint256 _value) public returns (bool success) {
+        // Allowance
+
+        // Approve
+        emit Approval(msg.sender, _spender, _value);
+
+        return true;
+    }
+    // transferFrom
 }
