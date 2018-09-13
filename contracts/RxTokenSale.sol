@@ -13,4 +13,14 @@ contract RxTokenSale {
         // Token Price
         tokenPrice = _tokenPrice;
     }
+
+    //Buy Tokens
+    function buyTokens(uint256 _numberOfTokens) public payable {
+       
+        // Require that value is equal to tokens
+        // Require that the contract has enough tokens
+        // Require that a transfer is successful
+        // Keep track of number of tokens sold
+        // Emit Sell Event
+    }
 }

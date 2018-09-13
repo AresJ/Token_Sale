@@ -17,4 +17,10 @@ contract('RxTokenSale', function(accounts){
             assert.equal(price, tokenPrice, 'token price is corrent');
         })
     })
+
+    it('facilitates token buying', function(){
+        return RxTokenSale.deployed().then(function(instance){
+            
+        })
+    })
 })
