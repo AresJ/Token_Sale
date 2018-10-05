@@ -4,7 +4,7 @@ import "./RxToken.sol";
 contract RxTokenSale {
     address admin;
     RxToken public tokenContract;
-    uint256 public tokenPrice = 1000000000000; 
+    uint256 public tokenPrice; 
     uint256 public tokensSold;
 
     event Sell(address _buyer, uint256 _amount);
@@ -28,6 +28,7 @@ contract RxTokenSale {
         // Require that the contract has enough tokens
         require(tokenContract.balanceOf(this) >= _numberOfTokens);
         // Require that a transfer is successful
+        require(tokenContract.transfer(msg.sender, _numberOfTokens));
         // Keep track of number of tokens sold
         tokensSold += _numberOfTokens;
         // Emit Sell Event

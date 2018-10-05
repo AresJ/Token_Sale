@@ -1,4 +1,4 @@
-var RxToken = artifacts.require("./RxToken.sol")
+ var RxToken = artifacts.require("./RxToken.sol")
 var RxTokenSale = artifacts.require("./RxTokenSale.sol");
 
 contract('RxTokenSale', function(accounts){

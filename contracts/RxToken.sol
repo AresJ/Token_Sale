@@ -44,7 +44,7 @@ contract RxToken {
     // Return a boolean
         return true;
     }
-
+    
     // Approve
     function approve(address _spender, uint256 _value) public returns (bool success) {
         // Allowance
