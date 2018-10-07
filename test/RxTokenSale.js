@@ -85,6 +85,6 @@ contract('RxTokenSale', function(accounts){
         return tokenSaleInstance.tokenPrice();
       }).then(function(price){
         assert.equal(price.toNumber(), 0, 'token price has been reset');
-})
+      })
     });
 });
