@@ -34,4 +34,14 @@ contract RxTokenSale {
         // Emit Sell Event
         emit Sell(msg.sender, _numberOfTokens);
     }
+
+    // End Sale
+    function endSale() public {
+        // Require admin
+        require(msg.sender == admin);
+        // Transfer remaining RxTokens to admin
+        require(tokenContract.transfer(admin, tokenContract.balanceOf(this)));
+        // Destroy contract
+        selfdestruct(admin);
+    }
 }
