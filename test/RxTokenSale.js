@@ -1,4 +1,4 @@
- var RxToken = artifacts.require("./RxToken.sol")
+var RxToken = artifacts.require("./RxToken.sol")
 var RxTokenSale = artifacts.require("./RxTokenSale.sol");
 
 contract('RxTokenSale', function(accounts){
@@ -76,15 +76,14 @@ contract('RxTokenSale', function(accounts){
         assert(error.message.indexOf('revert' >= 0, 'must be admin to end sale'));
         // End sale as admin
         return tokenSaleInstance.endSale({ from: admin });
-      }).then(function(receipt){
+      }).then(function(receipt){ 
         // receipt
         return tokenInstance.balanceOf(admin);
       }).then(function(balance){
         assert.equal(balance.toNumber(), 999990, 'returns all unsold RxTokens to admin');
-        // Check that token price was reset when selfDestruct was called
-        return tokenSaleInstance.tokenPrice();
-      }).then(function(price){
-        assert.equal(price.toNumber(), 0, 'token price has been reset');
-      })
+        // Check that the contract has no balance
+        balance = web3.eth.getBalance(tokenSaleInstance.address);
+        assert.equal(balance.toNumber(), 0);
+      });
     });
 });

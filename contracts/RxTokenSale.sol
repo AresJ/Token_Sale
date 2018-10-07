@@ -41,7 +41,7 @@ contract RxTokenSale {
         require(msg.sender == admin);
         // Transfer remaining RxTokens to admin
         require(tokenContract.transfer(admin, tokenContract.balanceOf(this)));
-        // Destroy contract
-        selfdestruct(admin);
+        // Transfer the balance to the admin
+        admin.transfer(address(this).balance);
     }
 }
